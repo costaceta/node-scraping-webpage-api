@@ -25,6 +25,16 @@ Os testes existentes para o `scrapeController` foram revisados e mantidos. Eles 
 
 O serviço de scraping (`scrapeService`) foi mockado nos testes para simular diferentes cenários sem realizar chamadas reais.
 
+### 4. Configuração Local com `.env`
+
+Agora é possível configurar a chave de API localmente utilizando um arquivo `.env`. Para isso, crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+
+```env
+API_KEY=your-local-api-key
+```
+
+Substitua `your-local-api-key` pela chave de API desejada. Isso facilita o teste local da aplicação sem a necessidade de configurar variáveis de ambiente manualmente.
+
 ## Como Executar os Testes
 
 Certifique-se de que todas as dependências estão instaladas:
@@ -57,6 +67,46 @@ export API_KEY=your-api-key
 ```
 
 Certifique-se de definir a chave de API antes de executar a aplicação ou os testes.
+
+## Endpoints Disponíveis
+
+### 1. `/scrape`
+
+- **Método**: POST
+- **Descrição**: Realiza o scraping de uma página web com base na URL fornecida.
+- **Cabeçalhos**:
+  - `x-api-key`: Chave de API para autenticação.
+- **Body**:
+  ```json
+  {
+    "url": "https://exemplo.com"
+  }
+  ```
+- **Respostas**:
+  - **200**: Retorna o texto extraído da página.
+    ```json
+    {
+      "data": "Texto extraído da página"
+    }
+    ```
+  - **400**: URL não fornecida ou inválida.
+    ```json
+    {
+      "error": "URL é obrigatória"
+    }
+    ```
+  - **403**: Chave de API ausente ou inválida.
+    ```json
+    {
+      "error": "Acesso negado: chave de API inválida"
+    }
+    ```
+  - **500**: Erro interno no servidor.
+    ```json
+    {
+      "error": "Erro ao processar a requisição"
+    }
+    ```
 
 ---
 
