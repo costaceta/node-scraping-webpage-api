@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "prepare": "husky",
-     "deploy": "vercel --prod"
+    "deploy": "vercel --prod"
   },
   "keywords": [],
   "author": "",
