@@ -24,4 +24,3 @@ export const scrapeService = async (url) => {
   const text = $('body').text();
   return text.replace(/\s+/g, ' ').trim();
 };
-

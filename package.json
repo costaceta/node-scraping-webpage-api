@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "jest": {
-    "transform": {}
-  },
   "scripts": {
     "dev": "node index.js",
     "test": "jest",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
   },
   "keywords": [],
@@ -22,6 +20,8 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "babel-jest": "^29.7.0",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",

@@ -1,6 +1,6 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
-const { scrapeService } = require('./scrapeService');
+
+import { scrapeService } from './scrapeService';
 
 // Mock axios
 jest.mock('axios');

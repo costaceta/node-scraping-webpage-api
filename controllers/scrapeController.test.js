@@ -1,7 +1,8 @@
 const request = require('supertest');
 const express = require('express');
-const { scrapeController } = require('./scrapeController');
-const { scrapeService } = require('../services/scrapeService');
+
+import { scrapeController } from './scrapeController';
+import { scrapeService } from '../services/scrapeService';
 
 // Mock scrapeService
 jest.mock('../services/scrapeService');
@@ -14,7 +15,9 @@ describe('scrapeController', () => {
   it('should return 400 if URL is not provided', async () => {
     const response = await request(app).post('/scrape').send({});
     expect(response.status).toBe(400);
-    expect(response.body).toEqual({ error: 'URL is required in the request body' });
+    expect(response.body).toEqual({
+      error: 'URL is required in the request body',
+    });
   });
 
   it('should return 200 and the scraped text if successful', async () => {
