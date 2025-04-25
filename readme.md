@@ -1,4 +1,4 @@
-# Scraping API
+# Node Scraping Webpage API
 
 Esta é uma API simples para extrair o texto de páginas HTML, removendo tags HTML, elementos desnecessários como `iframe`, `script`, `style`, e `noscript`, e normalizando o texto para facilitar o uso.
 
