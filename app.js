@@ -1,5 +1,6 @@
-const express = require('express');
-const scrapeRoutes = require('./routes/scrapeRoutes');
+import express from 'express';
+
+import scrapeRoutes from './routes/scrapeRoutes.js';
 
 const app = express();
 
@@ -9,4 +10,4 @@ app.use(express.json());
 // Routes
 app.use('/scrape', scrapeRoutes);
 
-module.exports = app;
+export default app;

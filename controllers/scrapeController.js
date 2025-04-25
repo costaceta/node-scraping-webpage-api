@@ -1,7 +1,7 @@
-const { scrapeService } = require('../services/scrapeService');
+import { scrapeService } from '../services/scrapeService.js';
 
 // Controller to handle scraping requests
-const scrapeController = async (req, res) => {
+export const scrapeController = async (req, res) => {
   const { url } = req.body;
 
   if (!url) {
@@ -19,5 +19,3 @@ const scrapeController = async (req, res) => {
       .json({ error: 'Failed to scrape the webpage', details: error.message });
   }
 };
-
-module.exports = { scrapeController };

@@ -1,8 +1,8 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import * as cheerio from 'cheerio';
 
 // Service to scrape a webpage and extract text
-const scrapeService = async (url) => {
+export const scrapeService = async (url) => {
   const response = await axios.get(url);
   const html = response.data;
 
@@ -25,4 +25,3 @@ const scrapeService = async (url) => {
   return text.replace(/\s+/g, ' ').trim();
 };
 
-module.exports = { scrapeService };
