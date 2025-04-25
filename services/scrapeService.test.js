@@ -7,7 +7,6 @@ jest.mock('axios');
 
 describe('scrapeService', () => {
   it('should scrape and extract text from a webpage', async () => {
-    // Mock HTML content
     const mockHtml = `
       <html>
         <body>
@@ -18,35 +17,35 @@ describe('scrapeService', () => {
       </html>
     `;
 
-    // Mock axios response
     axios.get.mockResolvedValue({ data: mockHtml });
 
-    // Call the service
     const url = 'http://example.com';
     const result = await scrapeService(url);
 
-    // Expected text after processing
     const expectedText = 'Hello World This is a test.';
 
-    // Assertions
     expect(result).toBe(expectedText);
     expect(axios.get).toHaveBeenCalledWith(url);
   });
 
   it('should handle empty body gracefully', async () => {
-    // Mock empty HTML content
     const mockHtml = `<html><body></body></html>`;
 
-    // Mock axios response
     axios.get.mockResolvedValue({ data: mockHtml });
 
-    // Call the service
     const url = 'http://example.com';
     const result = await scrapeService(url);
 
-    // Expected text after processing
     const expectedText = '';
 
     expect(result).toBe(expectedText);
+  });
+
+  it('should throw an error if the request fails', async () => {
+    axios.get.mockRejectedValue(new Error('Network error'));
+
+    const url = 'http://example.com';
+
+    await expect(scrapeService(url)).rejects.toThrow('Network error');
   });
 });
